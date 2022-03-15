@@ -1,0 +1,6 @@
+@import "../../assets/variables";
+
+.WrappContaeiner {
+  height: calc(100vh - ($header-height + $footer-height));
+  overflow: hidden;
+}
