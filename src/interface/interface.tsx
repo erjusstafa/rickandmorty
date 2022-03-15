@@ -1,8 +1,10 @@
+export interface ITitle {
+  title: string;
+}
 
-
-export interface IData{
-    info  : Info
-    result : IResults
+export interface IData {
+  info: Info;
+  result: IResults;
 }
 
 export interface Info {

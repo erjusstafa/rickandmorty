@@ -1,6 +1,35 @@
 @import "../../assets/variables";
 
-.WrappContaeiner {
-  height: calc(100vh - ($header-height + $footer-height));
-  overflow: hidden;
+.WrappContainer {
+  min-height: calc(100vh - ($header-height + $footer-height));
+  background-color: $main-color;
+
+  &Cards {
+    max-width: 80%;
+    margin: auto;
+    padding: 50px 0;
+
+    .Cards {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+
+      .CardsItem {
+        display: flex;
+        width: 500px;
+        height: 270px;
+        box-shadow: 2px 5px 12px black;
+        margin: 10px;
+
+        &Image {
+          > img {
+            object-fit: contain;
+            width: 50%;
+            height: max-content;
+            margin-right: auto;
+          }
+        }
+      }
+    }
+  }
 }

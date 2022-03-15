@@ -1,12 +1,23 @@
-import React from 'react'
-import styles from "./style.module.scss"
-import image from "../../config/images"
-const Header = () => {
+import React from "react";
+import styles from "./style.module.scss";
+import image from "../../config/images";
+
+function Header() {
   return (
     <div className={styles.WrappHeader}>
-        <img src={image.logo} alt="" />
+      <div className={styles.WrappHeaderContainer}>
+        <div className={styles.WrappHeaderContainerLogo}>
+          <img src={image.logo} alt="" />
+          Lofo
+        </div>
+        <div className={styles.WrappHeaderContainerLink}>
+          <span>Docs</span>
+          <span>About</span>
+          <span>Help Us</span>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Header
+export default Header;

@@ -3,4 +3,20 @@
 .WrappHeader {
   height: $header-height;
   width: 100%;
+  background-color: antiquewhite;
+  &Container {
+    height: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 80%;
+    margin: auto;
+
+    &Link {
+      > span {
+        padding: 0 20px;
+      }
+    }
+  }
 }

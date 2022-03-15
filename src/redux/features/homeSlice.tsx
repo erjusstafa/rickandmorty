@@ -3,21 +3,20 @@ import axios from "axios";
 import { API_URL } from "../../config/api";
 import { IData, Info, IResults } from "../../interface/interface";
 
-export const fetchApi = createAsyncThunk("home/fetchApi",async () => {
-  return await fetch("https://rickandmortyapi.com/api/character")
-    .then((res) => res.json())
-    .catch((err: string) => console.log("The API isn't fetching", err));
+export const fetchApi = createAsyncThunk("home/fetchApi", async () => {
+  return fetch(`https://rickandmortyapi.com/api/character`)
+    .then((res: Response) => res.json())
+    .catch((err: string) => console.log(" error bro"));
 });
 
 interface IDataWrap {
-  IDataInterface : IData;
+  dataApi: IData;
   loading: boolean;
   error: string;
 }
 
-
 const initialState: any | IDataWrap = {
-  data: [],
+  dataApi: [],
   fav: [],
   loading: false,
   error: "The API isn't fetching",
@@ -48,20 +47,30 @@ export const dataSlice = createSlice({
       const newList = state.fav.filter((item: DataItem) => item.pageid !== payload.pageid);
       state.fav = newList;
     },
-*/  }, 
+*/
+  },
   extraReducers: {
-    [fetchApi.pending.toString()]: (state, { payload }) => {
+    [fetchApi.pending.toString()]: (
+      state,
+      { payload }: PayloadAction<IData>
+    ) => {
       console.log("Pending");
       state.loading = true;
       state.error = "";
     },
-    [fetchApi.fulfilled.toString()]: (state, { payload }) => {
+    [fetchApi.fulfilled.toString()]: (
+      state,
+      { payload }: PayloadAction<IData>
+    ) => {
       console.log("Fetched Successfully!");
-      state.data = payload;
+      state.dataApi = payload;
       state.loading = false;
       state.error = "";
     },
-    [fetchApi.rejected.toString()]: (state, { payload }) => {
+    [fetchApi.rejected.toString()]: (
+      state,
+      { payload }: PayloadAction<IData>
+    ) => {
       console.log("Rejecteed!");
       state.loading = false;
       state.error = payload;
@@ -69,6 +78,6 @@ export const dataSlice = createSlice({
   },
 });
 
-export const { } = dataSlice.actions;
+export const {} = dataSlice.actions;
 
 export default dataSlice.reducer;
