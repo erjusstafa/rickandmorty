@@ -14,7 +14,7 @@ const Container = ({ dataApi, valSearch }: any | string) => {
   };
 
   const pages = [];
-  for (let i = 1; i <= Math.ceil(dataApi?.results.length / itemsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(dataApi.results.length / itemsPerPage); i++) {
     pages.push(i);
   }
 
@@ -59,13 +59,14 @@ const Container = ({ dataApi, valSearch }: any | string) => {
   let pageDecrementBtn = null;
   if (minPageNumberLimit >= 1) {
     pageDecrementBtn = <li className={styles.NumberList} onClick={handlePrevbtn}> &hellip; </li>;
-  }
+    console.log("efee",pageDecrementBtn )
 
+  }
   return (
     <div className={styles.WrappContainer}>
       <div className={styles.WrappContainerCards}>
         <div className={styles.Cards}>
-          {dataApi?.results.length > 0 ? (
+          {
             Object.values(dataApi?.results || [])
               .filter((item: any) => item?.name.toLowerCase().includes(valSearch.toLowerCase()))
               .slice(indexOfFirstItem, indexOfLastItem)
@@ -79,8 +80,8 @@ const Container = ({ dataApi, valSearch }: any | string) => {
                     <div className={styles.CardDescriptionHuman}>
                       <p
                         style={{
-                          height: ".5rem",
-                          width: ".5rem",
+                          height: "0.5rem",
+                          width: "0.5rem",
                           marginRight: "0.375rem",
                           borderRadius: "50%",
                           display: "flex",
@@ -98,9 +99,7 @@ const Container = ({ dataApi, valSearch }: any | string) => {
                   </div>
                 </div>
               ))
-          ) : (
-            <p style={{ color: "red" }}>No result</p>
-          )}
+         }
         </div>
 
         <Pagination

@@ -1,3 +1,5 @@
+@import "../../assets/variables";
+
 .WrappPagination {
   padding-top: 60px;
   display: flex;
@@ -14,13 +16,21 @@
 
     li {
       margin: 5px;
-
       cursor: pointer;
       button {
         padding: 10px 40px;
+        background-color: $footer-bg;
+        outline: none;
+        border: 1px solid $white-color;
+        color: $white-color;
+        cursor: pointer;
         @media (max-width: 600px) {
           padding: 5px 15px;
         }
+      }
+
+      .NumberList {
+        display: none !important;
       }
       &:nth-child(2),
       &:nth-child(3),
@@ -29,7 +39,7 @@
         width: 2.4rem;
         height: 2.4rem;
         border-radius: 50%;
-        background-color: antiquewhite;
+        background-color: $white-color;
         display: grid;
         place-content: center;
         @media (max-width: 600px) {

@@ -1,5 +1,4 @@
 @import "../../assets/variables";
-
 .WrappContainerEmpty {
   background-color: $main-color;
 }
@@ -10,23 +9,30 @@
     max-width: 100%;
     margin: auto;
     padding: 50px 0;
-
     .Cards {
-      display: flex;
-      flex-flow: row wrap;
+      display: grid;
+      grid-template-columns: repeat(3, auto);
       justify-content: center;
-
+      flex-flow: row wrap;
+      @media (max-width: 1900px) {
+        grid-template-columns: repeat(2, auto);
+      }
+      @media (max-width: 1300px) {
+        grid-template-columns: repeat(1, auto);
+      }
       .CardsItem {
         display: flex;
         flex-direction: row;
         border-radius: 0.5rem;
         width: 600px;
-        min-height: 220px;
+        height: 220px;
         box-shadow: 2px 5px 12px black;
         margin: 10px;
         background-color: $card-bg-color;
         @media (max-width: 600px) {
           flex-direction: column;
+          height: auto;
+          width: auto;
         }
         &Image {
           height: inherit;

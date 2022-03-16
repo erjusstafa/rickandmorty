@@ -12,16 +12,15 @@ function App() {
   const dispatch = useReduxDispatch();
   const { dataApi } = useReduxSelector((state) => state.home);
 
+  
   const [valSearch, setValSearch] = useState<string>("");
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const search = event.target.value;
-    setValSearch(search);
-  };
 
   useEffect(() => {
     dispatch(fetchApi());
   }, [dispatch]);
+
+    console.log("dataApi",dataApi);
+
   return (
     <>
       <Header />
