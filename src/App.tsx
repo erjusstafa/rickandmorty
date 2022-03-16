@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 import { useEffect } from "react";
 import "./App.scss";
 import Container from "./components/Container";
@@ -12,7 +12,12 @@ function App() {
   const dispatch = useReduxDispatch();
   const { dataApi } = useReduxSelector((state) => state.home);
 
-  console.log("dataapi", dataApi);
+  const [valSearch, setValSearch] = useState<string>("");
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const search = event.target.value;
+    setValSearch(search);
+  };
 
   useEffect(() => {
     dispatch(fetchApi());
@@ -20,8 +25,13 @@ function App() {
   return (
     <>
       <Header />
-      <Section title="The Rick and Morty API" />
-      <Container dataApi={dataApi} />
+      <Section
+        title="The Rick and Morty API"
+        dataApi={dataApi}
+        valSearch={valSearch}
+        setValSearch={setValSearch}
+      />
+      <Container dataApi={dataApi}  valSearch={valSearch}/>
       <Footer dataApi={dataApi} />
     </>
   );

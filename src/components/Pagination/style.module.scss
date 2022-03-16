@@ -1,0 +1,46 @@
+.WrappPagination {
+  padding-top: 60px;
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+
+  @media (max-width: 600px) {
+    margin-right: 51px;
+  }
+  .pageNumbers {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+
+    li {
+      margin: 5px;
+
+      cursor: pointer;
+      button {
+        padding: 10px 40px;
+        @media (max-width: 600px) {
+          padding: 5px 15px;
+        }
+      }
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5) {
+        width: 2.4rem;
+        height: 2.4rem;
+        border-radius: 50%;
+        background-color: antiquewhite;
+        display: grid;
+        place-content: center;
+        @media (max-width: 600px) {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+    }
+    .NumberList {
+      display: none;
+      padding: 40px;
+    }
+  }
+}

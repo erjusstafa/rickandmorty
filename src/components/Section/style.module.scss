@@ -11,7 +11,9 @@
 
     > input {
       padding: 15px 20px;
-      width: 500px;
+      max-width: 500px;
+      min-width: 300px;
+
       outline: none;
     }
   }

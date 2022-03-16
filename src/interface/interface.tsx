@@ -1,4 +1,11 @@
-export interface ITitle {
+export interface IContent {
+  title: string;
+  dataApi: any;
+  valSearch: string;
+
+  setValSearch: string | any;
+}
+interface ITitle {
   title: string;
 }
 
