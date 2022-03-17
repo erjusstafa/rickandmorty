@@ -3,7 +3,10 @@
 .WrappHeader {
   height: $header-height;
   width: 100%;
-  background-color: antiquewhite;
+  background-color: $white-color;
+  @media (max-width: 1900px) {
+    border-bottom: 1px solid rgb(230, 230, 230);
+  }
   &Container {
     height: inherit;
     display: flex;
@@ -12,10 +15,25 @@
     align-items: center;
     max-width: 80%;
     margin: auto;
-
     &Link {
       > span {
         padding: 0 20px;
+        font-weight: 700;
+      }
+
+      #Help {
+        margin: 0px;
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        border: 1px solid rgb(255, 152, 0);
+        background: transparent;
+        cursor: pointer;
+        &:hover {
+          border: 1px solid transparent;
+          background: rgb(255, 152, 0);
+          color: $white-color;
+          transition: 0.2s ease-in-out;
+        }
       }
     }
   }

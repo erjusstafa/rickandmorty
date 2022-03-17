@@ -28,8 +28,14 @@
         height: 220px;
         box-shadow: 2px 5px 12px black;
         margin: 10px;
+        text-decoration: none;
         background-color: $card-bg-color;
         @media (max-width: 600px) {
+          flex-direction: column;
+          height: auto;
+          width: 350px;
+        }
+        @media (max-width: 300px) {
           flex-direction: column;
           height: auto;
           width: auto;

@@ -1,12 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import axios from "axios";
 import { API_URL } from "../../config/api";
-import { IData, Info, IResults } from "../../interface/interface";
+import { IData } from "../../interface/interface";
 
 export const fetchApi = createAsyncThunk("home/fetchApi", async () => {
-  return fetch(`https://rickandmortyapi.com/api/character`)
+  return fetch(API_URL)
     .then((res: Response) => res.json())
-    .catch((err: string) => console.log(" error bro"));
+    .catch((err: string) => console.log(err));
 });
 
 interface IDataWrap {
@@ -15,9 +14,8 @@ interface IDataWrap {
   error: string;
 }
 
-const initialState: any | IDataWrap = {
-  dataApi: [],
-  fav: [],
+const initialState:  IDataWrap | any= {
+  dataApi: {},
   loading: false,
   error: "The API isn't fetching",
 };
@@ -25,30 +23,7 @@ const initialState: any | IDataWrap = {
 export const dataSlice = createSlice({
   name: "home",
   initialState,
-  reducers: {
-    /* addFav: (state, { payload }: PayloadAction<DataItem>) => {
-      const ekzistoIndex = state.fav.findIndex((item: DataItem) => item.pageid === payload.pageid);
-
-      if (ekzistoIndex >= 0) {
-        const nextFav = state.fav.filter((item: DataItem) => item.pageid !== payload.pageid);
-        state.fav = nextFav;
-      } else {
-        state.fav = [
-          ...state.fav,
-          {
-            pageid: payload.pageid,
-            title: payload.title,
-          },
-        ];
-      }
-    },
-
-    delFav: (state, { payload }: PayloadAction<DataItem>) => {
-      const newList = state.fav.filter((item: DataItem) => item.pageid !== payload.pageid);
-      state.fav = newList;
-    },
-*/
-  },
+  reducers: {},
   extraReducers: {
     [fetchApi.pending.toString()]: (
       state,
@@ -68,12 +43,10 @@ export const dataSlice = createSlice({
       state.error = "";
     },
     [fetchApi.rejected.toString()]: (
-      state,
-      { payload }: PayloadAction<IData>
-    ) => {
+      state) => {
       console.log("Rejecteed!");
       state.loading = false;
-      state.error = payload;
+      state.error = state.error
     },
   },
 });

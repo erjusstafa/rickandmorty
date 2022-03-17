@@ -1,14 +1,14 @@
 import React from "react";
-import { IData, Info } from "../../interface/interface";
+import { IcountFooter} from "../../interface/interface";
 import styles from "./style.module.scss";
 
-const Footer = ({ dataApi }: any) => {
+const Footer = ({ count, pages }: IcountFooter) => {
   return (
     <div className={styles.WrappFooter}>
       <div className={styles.WrappFooterLink}>
         <div>
-          <span>Charachters :{dataApi?.info?.count} </span>
-          <span>Pages : {dataApi?.info?.pages} </span>
+          <span>Charachters :{count} </span>
+          <span>Pages : {pages} </span>
         </div>
         <div>
           <span>Server Status</span>

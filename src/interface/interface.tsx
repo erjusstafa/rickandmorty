@@ -5,13 +5,10 @@ export interface IContent {
 
   setValSearch: string | any;
 }
-interface ITitle {
-  title: string;
-}
 
 export interface IData {
   info: Info;
-  result: IResults;
+  result: IResults[];
 }
 
 export interface Info {
@@ -19,6 +16,12 @@ export interface Info {
   pages: number;
   next: string;
   prev: any;
+}
+
+
+export interface IcountFooter{
+  count: number;
+   pages :number; 
 }
 
 export interface IResults {
