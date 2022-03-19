@@ -30,6 +30,7 @@
         margin: 10px;
         text-decoration: none;
         background-color: $card-bg-color;
+        cursor: pointer;
         @media (max-width: 600px) {
           flex-direction: column;
           height: auto;

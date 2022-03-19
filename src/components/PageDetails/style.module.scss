@@ -1,61 +1,80 @@
 @import "../../assets/variables";
-.Cards {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  justify-content: center;
-  flex-flow: row wrap;
-  @media (max-width: 1900px) {
-    grid-template-columns: repeat(2, auto);
-  }
-  @media (max-width: 1300px) {
-    grid-template-columns: repeat(1, auto);
+.WrapperDetails {
+  width: 100%;
+  min-height: calc(100vh - ($footer-height + $header-height));
+  margin-top: 30px;
+
+  .BackToHome {
+    border-radius: 0.5rem;
+    padding: 0.5rem 2rem;
+    border: 1px solid rgb(255, 152, 0);
+    background: transparent;
+    margin-left: 20px;
+
+    cursor: pointer;
+    &:hover {
+      border: 1px solid transparent;
+      background: rgb(255, 152, 0);
+      color: $white-color;
+      transition: 0.2s ease-in-out;
+    }
   }
   .CardsItem {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-content: center;
     border-radius: 0.5rem;
-    width: 600px;
-    height: 220px;
-    box-shadow: 2px 5px 12px black;
-    margin: 10px;
-    text-decoration: none;
-    background-color: $card-bg-color;
+    width: calc(100% - 300px);
+    margin: auto;
+    height: auto;
+
     @media (max-width: 600px) {
       flex-direction: column;
       height: auto;
       width: auto;
     }
     &Image {
-      height: inherit;
-      overflow: hidden;
-      margin-left: 0;
-
+      mask-image: -webkit-linear-gradient(bottom, #edeff7 70%, transparent 88%);
       > img {
         object-fit: cover;
         opacity: 1;
-        transition: opacity 0.5s ease 0s;
+        transition: opa city 0.5s ease 0s;
         object-position: center center;
         border-radius: 0.5rem;
+        width: 50%;
+        margin: auto;
+        display: block;
         height: 100%;
-        @media (max-width: 600px) {
-          width: 100%;
-          height: 200px;
-        }
+        mask-image: -webkit-linear-gradient(top, #edeff7 70%, transparent 78%);
+
+        user-select: none;
       }
     }
     .CardDescription {
-      display: block;
+      width: 60%;
+      margin: 30px auto;
+      display: flex;
+      height: auto;
+      justify-content: space-between;
       text-align: left;
       text-align: start;
       line-height: 6px;
-      margin: auto 20px;
+      @media (max-width: 800px) {
+        flex-direction: column;
+        height: auto;
+        width: auto;
+      }
 
+      @media (min-width: 800px) and (max-width: 1220px) {
+        width: 100%;
+      }
       .CardDescriptionHuman {
         display: flex;
         flex-direction: row;
+
         > h3 {
           font-weight: 500;
-          color: $white-color;
+          color: $black-color;
           text-align: start;
           cursor: pointer;
           &:hover {
@@ -65,7 +84,7 @@
       }
       > h2 {
         font-weight: 900;
-        color: $white-color;
+        color: $black-color;
         text-align: start;
         cursor: pointer;
         &:hover {
@@ -75,7 +94,7 @@
 
       > h4 {
         font-weight: 700;
-        color: $white-color;
+        color: $black-color;
         text-align: start;
         cursor: pointer;
         &:hover {
@@ -83,11 +102,11 @@
         }
       }
       .cardItemText {
-        color: $white-color;
+        color: $black-color;
         opacity: 0.5;
       }
       .cardItemTextLocation {
-        color: $white-color;
+        color: $black-color;
         &:hover {
           color: $hover-color;
         }

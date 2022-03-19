@@ -1,14 +1,18 @@
-export interface IContent {
+export interface ISection {
   title: string;
-  dataApi: any;
+  dataApi: IData;
   valSearch: string;
-
-  setValSearch: string | any;
+  setValSearch: any;
 }
 
+export interface IContainer {
+  dataApi: IData;
+  valSearch: string;
+  goToDetails: () => void;
+}
 export interface IData {
   info: Info;
-  result: IResults[];
+  results: IResults[];
 }
 
 export interface Info {
@@ -18,10 +22,9 @@ export interface Info {
   prev: any;
 }
 
-
-export interface IcountFooter{
+export interface IcountFooter {
   count: number;
-   pages :number; 
+  pages: number;
 }
 
 export interface IResults {

@@ -7,8 +7,7 @@ function Header() {
     <div className={styles.WrappHeader}>
       <div className={styles.WrappHeaderContainer}>
         <div className={styles.WrappHeaderContainerLogo}>
-          <img src={image.logo} alt="" />
-          Logo
+          <img src={image?.logo} alt="" />
         </div>
         <div className={styles.WrappHeaderContainerLink}>
           <span>Docs</span>

@@ -14,10 +14,10 @@ interface IDataWrap {
   error: string;
 }
 
-const initialState:  IDataWrap | any= {
+const initialState: IDataWrap | any = {
   dataApi: {},
   loading: false,
-  error: "The API isn't fetching",
+  error: "",
 };
 
 export const dataSlice = createSlice({
@@ -26,31 +26,25 @@ export const dataSlice = createSlice({
   reducers: {},
   extraReducers: {
     [fetchApi.pending.toString()]: (
-      state,
+      state: any,
       { payload }: PayloadAction<IData>
     ) => {
-      console.log("Pending");
       state.loading = true;
       state.error = "";
     },
     [fetchApi.fulfilled.toString()]: (
-      state,
-      { payload }: PayloadAction<IData>
+      state: any,
+      { payload }: PayloadAction<IDataWrap>
     ) => {
-      console.log("Fetched Successfully!");
       state.dataApi = payload;
       state.loading = false;
       state.error = "";
     },
-    [fetchApi.rejected.toString()]: (
-      state) => {
-      console.log("Rejecteed!");
+    [fetchApi.rejected.toString()]: (state: any) => {
       state.loading = false;
-      state.error = state.error
+      state.error = "The API isn't fetching";
     },
   },
 });
-
-export const {} = dataSlice.actions;
 
 export default dataSlice.reducer;

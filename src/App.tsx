@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import "./App.scss";
 import Container from "./components/Container";
@@ -12,9 +12,14 @@ import PageDetails from "./components/PageDetails";
 
 function App() {
   const dispatch = useReduxDispatch();
-  const { dataApi } = useReduxSelector((state) => state.home);
+  const { dataApi, show } = useReduxSelector((state) => state.home);
 
   const [valSearch, setValSearch] = useState<string>("");
+  const [showSection, setShowSection] = useState<boolean>(true);
+
+  const goToDetails = () => {
+    setShowSection(false);
+  };
 
   useEffect(() => {
     dispatch(fetchApi());
@@ -24,24 +29,28 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
-        <Section
-          title="The Rick and Morty API"
-          dataApi={dataApi}
-          valSearch={valSearch}
-          setValSearch={setValSearch}
-        />
-        <Routes>
-          <Route path={"/"} element={<Container
+        {showSection ? (
+          <Section
+            title="The Rick and Morty API"
             dataApi={dataApi}
             valSearch={valSearch}
-          />}
+            setValSearch={setValSearch}
+          />
+        ) : null}
+        <Routes>
+          <Route
+            path={"/"}
+            element={
+              <Container
+                dataApi={dataApi}
+                valSearch={valSearch}
+                goToDetails={goToDetails}
+              />
+            }
           />
           <Route path={"character/:id"} element={<PageDetails />} />
         </Routes>
-        <Footer
-          count={dataApi?.info?.count}
-          pages={dataApi?.info?.pages}
-        />
+        <Footer count={dataApi?.info?.count} pages={dataApi?.info?.pages} />
       </BrowserRouter>
     </>
   );

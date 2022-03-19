@@ -1,9 +1,8 @@
 import React, { ChangeEvent } from "react";
-import { IContent } from "../../interface/interface";
+import { ISection } from "../../interface/interface";
 import styles from "./style.module.scss";
 
-function Section({ title ,valSearch,setValSearch}:  IContent) {
-
+function Section({ title, valSearch, setValSearch }: ISection) {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValSearch(event.target.value);
   };
